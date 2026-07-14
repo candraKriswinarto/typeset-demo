@@ -1,21 +1,38 @@
-# Next.js template
+# typeset-demo
 
-This is a Next.js template with shadcn/ui.
+A Next.js demo project showcasing [shadcn/typeset](https://ui.shadcn.com/docs/typeset) — a single stylesheet that styles rendered markdown content.
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Home |
+| `/docs` | Documentation page with markdown rendered via react-markdown |
+| `/article` | Long-form article with typography, lists, tables, and code blocks |
+| `/chat` | Chat interface with user/assistant message bubbles |
+
+All pages use the `typeset typeset-chat` preset with Geist (body), Roboto (headings), and Geist Mono (code) fonts.
+
+## Fonts
+
+- **Geist** — body text (`--font-geist`)
+- **Roboto** — headings (`--font-roboto`)
+- **Geist Mono** — code (`--font-geist-mono`)
 
 ## Adding components
-
-To add components to your app, run the following command:
 
 ```bash
 npx shadcn@latest add button
 ```
 
-This will place the ui components in the `components` directory.
+## Using typeset
 
-## Using components
-
-To use the components in your app, import them as follows:
+Wrap markdown content in a `typeset` container with a preset class:
 
 ```tsx
-import { Button } from "@/components/ui/button";
+<div className="typeset typeset-chat max-w-[42em]">
+  <ReactMarkdown>{content}</ReactMarkdown>
+</div>
 ```
+
+To exclude an embedded component from typeset styles, add `not-typeset` class or `data-not-typeset` attribute to it.
